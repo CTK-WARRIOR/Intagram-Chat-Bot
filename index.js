@@ -9,11 +9,11 @@ client.on('connected', () => {
 client.on('messageCreate', (message) => {
     if (message.author.id === client.user.id) return
     message.markSeen();
-    fetch("https://api.udit.gq/api/chatbot?message=" + message.content)
+    fetch("https://kukichatbot.herokuapp.com/kuki/chatbot?message=" + message.content)
     .then(res => res.json())
     .then(json => {
       if(!json.message) return;
-      return message.reply(json.message);
+      return message.reply(json.reply);
     }).catch(err => {});
 });
  
